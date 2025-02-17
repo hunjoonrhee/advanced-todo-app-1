@@ -3,19 +3,19 @@ import TodoItem from "./TodoItem";
 
 interface TodoListProps {
   todos: Todo[];
+  onToggleComplete: (id: string) => void;
+  onDeleteTodo: (id: string) => void;
 }
 
 const TodoList: React.FC<TodoListProps> = (props: TodoListProps) => {
-  const { todos } = props;
+  const { todos, onToggleComplete, onDeleteTodo } = props;
   return (
-    <ul>
+    <ul className="todo-list">
       {todos.length === 0 ? (
         <p> no task </p>
       ) : (
         todos.map((todo) => (
-          // TodoItem 컴포넌트가 렌더링되는 부분
-          <TodoItem key={todo.id} todo={todo} />
-          // <li key={todo.id}> {todo.text} </li>
+          <TodoItem key={todo.id} todo={todo} onDeleteTodo={onDeleteTodo} onToggleComplete={onToggleComplete} />
         ))
       )}
     </ul>
