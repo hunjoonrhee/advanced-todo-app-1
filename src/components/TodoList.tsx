@@ -1,4 +1,5 @@
 import { Todo } from "../types/Todo";
+import TodoItem from "./TodoItem";
 
 interface TodoListProps {
   todos: Todo[];
@@ -13,7 +14,8 @@ const TodoList: React.FC<TodoListProps> = (props: TodoListProps) => {
       ) : (
         todos.map((todo) => (
           // TodoItem 컴포넌트가 렌더링되는 부분
-          <li key={todo.id}> {todo.text} </li>
+          <TodoItem key={todo.id} todo={todo} />
+          // <li key={todo.id}> {todo.text} </li>
         ))
       )}
     </ul>
