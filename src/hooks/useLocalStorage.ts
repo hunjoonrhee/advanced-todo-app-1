@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
   const [storedValue, setStoredValue] = useState<T>(() => {
@@ -6,7 +6,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
       const item = localStorage.getItem(key);
       return item ? JSON.parse(item) : [];
     } catch (error) {
-      console.error("LocalStorage error: ", error);
+      console.error('LocalStorage error: ', error);
       return initialValue;
     }
   });
@@ -15,7 +15,7 @@ export function useLocalStorage<T>(key: string, initialValue: T) {
     try {
       setStoredValue(value);
     } catch (error) {
-      console.error("LocalStorage error: ", error);
+      console.error('LocalStorage error: ', error);
     }
   };
 

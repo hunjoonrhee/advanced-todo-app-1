@@ -1,5 +1,5 @@
-import { useTranslation } from "react-i18next";
-import { Todo } from "../types/Todo";
+import { useTranslation } from 'react-i18next';
+import { Todo } from '../types/Todo';
 
 interface TodoItemProps {
   todo: Todo;
@@ -16,11 +16,11 @@ const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
   const { todo, onToggleComplete, onDeleteTodo } = props;
 
   return (
-    <li className={`todo-item ${todo.completed ? "completed" : ""}`}>
-      <span onClick={() => onToggleComplete(todo.id)} style={{ cursor: "pointer" }}>
+    <li className={`todo-item ${todo.completed ? 'completed' : ''}`}>
+      <span onClick={() => onToggleComplete(todo.id)} style={{ cursor: 'pointer' }}>
         {todo.text}
       </span>
-      <button onClick={() => onDeleteTodo(todo.id)}> {t("delete_button")} </button>
+      <button onClick={() => onDeleteTodo(todo.id)}> {t('delete_button')} </button>
     </li>
   );
 };

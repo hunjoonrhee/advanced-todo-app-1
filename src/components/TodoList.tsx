@@ -1,6 +1,6 @@
-import { useTranslation } from "react-i18next";
-import { Todo } from "../types/Todo";
-import TodoItem from "./TodoItem";
+import { useTranslation } from 'react-i18next';
+import { Todo } from '../types/Todo';
+import TodoItem from './TodoItem';
 
 interface TodoListProps {
   todos: Todo[];
@@ -14,10 +14,15 @@ const TodoList: React.FC<TodoListProps> = (props: TodoListProps) => {
   return (
     <ul className="todo-list">
       {todos.length === 0 ? (
-        <p> {t("no_task")} </p>
+        <p> {t('no_task')} </p>
       ) : (
         todos.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} onDeleteTodo={onDeleteTodo} onToggleComplete={onToggleComplete} />
+          <TodoItem
+            key={todo.id}
+            todo={todo}
+            onDeleteTodo={onDeleteTodo}
+            onToggleComplete={onToggleComplete}
+          />
         ))
       )}
     </ul>

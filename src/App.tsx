@@ -1,11 +1,11 @@
-import "./App.css";
-import TodoForm from "./components/TodoForm";
-import { v4 as uuidv4 } from "uuid";
-import { Todo } from "./types/Todo";
-import TodoList from "./components/TodoList";
-import { useLocalStorage } from "./hooks/useLocalStorage";
-import { useTranslation } from "react-i18next";
-import "./i18n/18n";
+import './App.css';
+import TodoForm from './components/TodoForm';
+import { v4 as uuidv4 } from 'uuid';
+import { Todo } from './types/Todo';
+import TodoList from './components/TodoList';
+import { useLocalStorage } from './hooks/useLocalStorage';
+import { useTranslation } from 'react-i18next';
+import './i18n/18n';
 
 const App: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -15,7 +15,7 @@ const App: React.FC = () => {
   };
 
   // Todos의 리스트 상태
-  const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
+  const [todos, setTodos] = useLocalStorage<Todo[]>('todos', []);
   const addTodo = (text: string) => {
     const newTodo: Todo = {
       id: uuidv4(),
@@ -33,16 +33,18 @@ const App: React.FC = () => {
   };
 
   const toggleComplete = (id: string) => {
-    const updatedTodos = todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo));
+    const updatedTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+    );
     setTodos(updatedTodos);
   };
 
   return (
     <div>
-      <h1>{t("app_title")}</h1>
+      <h1>{t('app_title')}</h1>
       <div>
-        <button onClick={() => changeLanguage("en")}>English</button>
-        <button onClick={() => changeLanguage("de")}>German</button>
+        <button onClick={() => changeLanguage('en')}>English</button>
+        <button onClick={() => changeLanguage('de')}>German</button>
       </div>
       <TodoForm onAddTodo={addTodo} />
       <TodoList todos={todos} onDeleteTodo={deleteTodo} onToggleComplete={toggleComplete} />
