@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Todo } from "../types/Todo";
 
 interface TodoItemProps {
@@ -11,6 +12,7 @@ interface TodoItemProps {
 // 아이템 완료로 상태 바꾸기 -> 아이템을 클릭하면 상태가 바뀜. -> 이 상태도 App.tsx에서 바뀌어야 함. 따라서 이 상태를 바꿔주는 메서드도 프롭스로 넘어와야함.
 
 const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
+  const { t } = useTranslation();
   const { todo, onToggleComplete, onDeleteTodo } = props;
 
   return (
@@ -18,7 +20,7 @@ const TodoItem: React.FC<TodoItemProps> = (props: TodoItemProps) => {
       <span onClick={() => onToggleComplete(todo.id)} style={{ cursor: "pointer" }}>
         {todo.text}
       </span>
-      <button onClick={() => onDeleteTodo(todo.id)}> Delete </button>
+      <button onClick={() => onDeleteTodo(todo.id)}> {t("delete_button")} </button>
     </li>
   );
 };
